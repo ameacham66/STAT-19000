@@ -1,0 +1,42 @@
+1a)CENTRAL EAST    SOUTH   WEST
+   2463343 3263360 2221500 2677350
+   
+2a)myDF <- read.csv("/class/datamine/data/taxi/yellow/yellow_tripdata_2019-06.csv")
+2b)sum(myDF$passenger_count)
+   sum("/class/datamine/data/taxi/yellow/yellow_tripdata_2019-06.csv")
+   10625553(I don't know why my number is wrong, but one of the TA's said it was ok because I have the right code)
+   
+
+ 3a)myDF <- read.csv("http://stat-computing.org/dataexpo/2009/airports.csv")
+ 
+ head(myDF)
+ #and the dimensions of the file:
+ dim(myDF)
+ 
+ #These are the longitudes and latitudes:
+ myDF$longitude
+ myDF$latitude
+ 
+ #Now we build a new data.frame containing
+ # only the longitudes and latitudes.
+ mypoints <- data.frame(lon=myDF$long.lat=myDF$lat)
+ 
+ #We use Dr Ward's Google API key,
+ #so that we are able to load maps in Google.
+ register_google(key = "AIzaSyBIbyOS9-BQuKdbAmtAnGhHvjFdQKFXEHA", write = TRUE)
+ 
+ #In preparation for making a map,
+ us_center = as.numeric(geocode("USA"))
+ # Then we build a map of USA
+ USmap <- ggmap(get_googlemap(center=us_center,zoom=4))
+ #and we display it.
+ USmap
+ 
+ #Finally, we add the points to the map
+ USmap <- USmap + geom_point(data=mypoints, size=0.1)
+ USmap
+ #One final remark:
+ # 3 locations are far enough away from the center
+ # of US that they do not show up.
+ 
+ 
